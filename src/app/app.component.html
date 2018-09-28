@@ -21,15 +21,29 @@
           </tr>
         </thead>
         <tbody>
+
           <tr *ngFor="let cliente of clientes">
-            <th scope="row"><img src="{{cliente.picture.thumbnail}}" alt="photo" style="border-radius: 50%" /></th>
-            <td style="text-align: left;font-size: 1.5em;vertical-align: bottom;text-transform:capitalize;"><b>{{cliente.name.title}}</b> {{cliente.name.first}} {{cliente.name.last}}</td>
-            <td></td>
-            <td>
+            <th *ngIf="cliente.key>=indice_start && cliente.key<(indice_start+users_per_pages)" scope="row"><img src="{{cliente.picture.thumbnail}}" alt="photo" style="border-radius: 50%" /></th>
+            <td *ngIf="cliente.key>=indice_start && cliente.key<(indice_start+users_per_pages)" style="text-align: left;font-size: 1.5em;vertical-align: bottom;text-transform:capitalize;"><b>{{cliente.name.title}}</b> {{cliente.name.first}} {{cliente.name.last}}</td>
+            <td *ngIf="cliente.key>=indice_start && cliente.key<(indice_start+users_per_pages)"></td>
+            <td *ngIf="cliente.key>=indice_start && cliente.key<(indice_start+users_per_pages)">
               <button  (click)="onSelect(cliente)" class="btn btn-info search"><i class="fa fa-search"></i></button>
             </td>
           </tr>
         </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">Pages. {{count_pages}}
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item" *ngFor="let p of pages">
+                    <a class="page-link" href="#" (click)="changePage(p)">{{p.page}}</a>
+                  </li>
+                </ul>
+              </nav>
+            </td>
+          </tr>
+        </tfoot>
       </table>
 
     </div>
