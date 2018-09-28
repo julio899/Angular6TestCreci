@@ -25,7 +25,7 @@ export class AppComponent {
 	    this.clientes=info;
 	    this.cantidad=info.length;
 	    console.log(this.clientes);
-	     //i Like Preload All images the profile
+	     //i Like to Preload All images the profile
 	     for (var i = info.length - 1; i >= 0; i--) {
 	     	var imageObject = new Image();
 	        imageObject.src = info[i].picture.large;
